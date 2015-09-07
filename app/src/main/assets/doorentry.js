@@ -161,7 +161,6 @@ var DoorEntry = (function () {
         $('#alphabet > table > tbody').append(ich.tmpl_lettergroup({
           letters: DE.companies.group[group].letters.join('').toUpperCase()
         }).css('height', letterGroupHeight + 'vh').css('color', '#888888'))
-
       }
     }
     // have letter groups highlighted initially before recalculated upon scrolling
