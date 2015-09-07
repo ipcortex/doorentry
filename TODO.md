@@ -6,3 +6,4 @@ TODO
 - improve kiosk mode provisioning story
 - clean `index.html` because it contains remnants of old implementations (in case it needs to be reverted)
 - TESTS
+- error messages for things like unreachable PBX and loss of connectivity
