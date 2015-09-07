@@ -1,0 +1,36 @@
+body {
+    max-width: 100vw;
+    height: 100vh;
+    -webkit-user-select: none;
+}
+
+html {
+    height: 100vh;
+    background-color: #003263;
+}
+tr {
+    text-align: center;
+    color: white;
+}
+#alphabet {
+    margin: 0;
+    padding: 0;
+    width: 12vw;
+    position: fixed;
+    top: 0;
+    left: 88vw;
+    display: hidden;
+}
+#companies-list {
+    padding: 0;
+    margin: 0;
+    float: left;
+    overflow: hidden;
+    width: 100vw;
+}
+.ui.horizontal.divider {
+    color: white;
+}
+table {
+    width: inherit;
+}

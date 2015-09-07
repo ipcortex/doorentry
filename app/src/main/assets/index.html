@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <title>DoorEntry</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="semantic.min.css">
+        <link rel="stylesheet" href="vex.css" />
+        <link rel="stylesheet" href="vex-theme-flat-attack.css" />
+   </head>
+    <body class="dimmable">
+        <div id="calldimmer" class="ui page dimmer" onclick='DoorEntry.endCall()'>
+            <div class="content">
+                <div class="center">
+                    <div class="ui inverted massive red button">End Call</div>
+                </div>
+            </div>
+        </div>
+        <div id="callmodal" class="ui basic modal">
+            <div class="header">
+                Call COMPANY
+            </div>
+            <div class="actions">
+                <div class="ui inverted massive red button" onclick='DoorEntry.endCall()'>End Call</div>
+            </div>
+        </div>
+        <div id="loading" class="ui page dimmer">
+            <div class="ui large loader"></div>
+        </div>
+        <div id="companies-list">
+        </div>
+        <div id="alphabet">
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <script id="tmpl_companygroup" type="text/x-icanhaz">
+            <div id="companygroup{{letters}}" data-lettergroupid="lettergroup{{letters}}" class="companygroup ui three cards">
+                {{#not_empty}}
+                <div class="ui horizontal divider">
+                    {{letters}}
+                </div>
+                {{/not_empty}}
+            </div>
+        </script>
+        <script id="tmpl_lettergroup" type="text/x-icanhaz">
+            <tr id="lettergroup{{letters}}" class="lettergroup" onclick='alphabetScroll("#companygroup{{letters}}")'>
+                <td>{{letters}}</td>
+            </tr>
+        </script>
+        <script id="tmpl_companycard" type="text/x-icanhaz">
+            <div id="{{companyid}}" class="ui card" onclick='DoorEntry.call("{{name}}",{{extension}})'>
+                <div class="image">
+                    <img src="{{image}}" class="ui rounded">
+                </div>
+                <div class="content">
+                    <a class="huge blue header">{{name}}</a>
+                </div>
+                <div class="ui big bottom attached green button">Call</div>
+            </div>
+        </script>
+        <script id="tmpl_companyitem" type="text/x-icanhaz">
+            <div id="{{companyid}}" class="item" onclick='DoorEntry.call("{{name}}",{{extension}})'> 
+                <div class="ui small image">
+                    <img src="{{image}}">
+                </div>
+                <div class=" middle aligned content">
+                    <a class="header">{{name}}</a>
+                </div>
+                <div class="ui left attached green button"> 
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <i class="large phone icon"></i>
+                </div>
+            </div>
+        </script>
+        <script src="jquery-2.1.4.min.js"></script>
+        <script src="jquery.visible.min.js"></script>
+        <script src="jquery.waypoints.min.js"></script>
+        <script src="inview.min.js"></script>
+        <script src="vex.combined.min.js"></script>
+        <script src="semantic.min.js"></script>
+        <script src="ICanHaz.min.js"></script>
+        <script src="doorentry.js"></script>
+    </body>
+</html>
