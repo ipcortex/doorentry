@@ -5,3 +5,4 @@ TODO
 - enhance the UDP listener (see TODOs in `MainActivity.java`)
 - improve kiosk mode provisioning story
 - clean `index.html` because it contains remnants of old implementations (in case it needs to be reverted)
+- TESTS

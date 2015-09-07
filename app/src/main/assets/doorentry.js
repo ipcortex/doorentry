@@ -1,9 +1,12 @@
 /* global ich, $, hostConfig, vex, attachMediaStream, IPCortex */
+
+// loads API files from PABX defined in the config file
 var scripts = ['/api/wrapper.whtm', '/cinclude/adapter.js', '/api/jssip/jssip.js']
 for (var script in scripts) {
   $('<script>').attr('type', 'text/javascript').appendTo('body').attr('src', 'https://' + hostConfig.getHost() + scripts[script])
 }
 
+// Vex is the dialog library from HubSpot
 vex.defaultOptions.className = 'vex-theme-flat-attack'
 vex.defaultOptions.overlayClosesOnClick = false
 
@@ -128,9 +131,9 @@ var DoorEntry = (function () {
       // call ended
       if (calls[call].get('state') === 'dead') {
         document.querySelector('#callstreamvideo').pause()
-      // FIXME: change to vex dialog
-      //                $('#callmodal').modal('hide')
-      //                $('.ui.dimmer.modals.page').removeClass('visible').removeClass('active').addClass('hidden')
+        // included in case semantic ui is needed again but it was removed because it doesn't work very well
+        // $('#callmodal').modal('hide')
+        // $('.ui.dimmer.modals.page').removeClass('visible').removeClass('active').addClass('hidden')
       }
       var streams = calls[call].get('remoteStreams')
       // call started
@@ -144,7 +147,8 @@ var DoorEntry = (function () {
           vex.dialog.open(callDialogOptions)
           calling = false
         }
-      //                $('#callmodal').modal('show')
+        // see above
+        // $('#callmodal').modal('show')
       }
     }
   }
@@ -211,9 +215,10 @@ var DoorEntry = (function () {
           console.log(message)
         }
       })
-      // FIXME: change to vex dialog
-      //          $('#callmodal .header').html('Calling ' + name)
+      // see above
+      // $('#callmodal .header').html('Calling ' + name)
       callDialogOptions.message = 'Calling ' + name
+      // TODO: add better loading screen
       $(document.body).css('display', 'none')
       // $('#loading').dimmer('show')
     }
