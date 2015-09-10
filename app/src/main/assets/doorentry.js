@@ -143,6 +143,11 @@ var DoorEntry = (function () {
         // FIXME: change to vex dialog
         $('#loading').dimmer('hide')
         $(document.body).css('display', 'inline')
+        $('.companygroup').each(function (index) {
+          if (!$(this).visible(true)) {
+            $('#' + $(this).data('lettergroupid')).css({backgroundColor: '#003263', color: '#FFFFFF'})
+          }
+        })
         if (calling) {
           vex.dialog.open(callDialogOptions)
           calling = false

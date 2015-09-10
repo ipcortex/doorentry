@@ -3,7 +3,6 @@ package uk.co.ipcortex.doorentry;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
-import android.support.annotation.MainThread;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    // could change this to refresh whole android application
+    // currently just refreshes app in web view
     private Runnable refreshApp = new Runnable() {
         @Override
         public void run() {
@@ -109,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
             networkInfo = connMgr.getActiveNetworkInfo();
         }
         
-        refreshListener = new RefreshListener();
+        RefreshListener refreshListener = new RefreshListener();
         refreshListener.start();
+
         mXwalkView.load("file:///android_asset/index.html", null);
     }
 
