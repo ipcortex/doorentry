@@ -9,7 +9,7 @@ for (var script in scripts) {
 // Vex is the dialog library from HubSpot
 vex.defaultOptions.className = 'vex-theme-flat-attack'
 vex.defaultOptions.overlayClosesOnClick = false
-
+var vexDialog
 var calling = false
 
 // This function is an abstraction that allows a maths genius to implement dynamically
@@ -131,6 +131,9 @@ var DoorEntry = (function () {
       // call ended
       if (calls[call].get('state') === 'dead') {
         document.querySelector('#callstreamvideo').pause()
+        if (vexDialog) {
+          vex.close(vexDialog.data().vex.id)
+        }
         // included in case semantic ui is needed again but it was removed because it doesn't work very well
         // $('#callmodal').modal('hide')
         // $('.ui.dimmer.modals.page').removeClass('visible').removeClass('active').addClass('hidden')
@@ -149,7 +152,7 @@ var DoorEntry = (function () {
           }
         })
         if (calling) {
-          vex.dialog.open(callDialogOptions)
+          vexDialog = vex.dialog.open(callDialogOptions)
           calling = false
         }
         // see above
