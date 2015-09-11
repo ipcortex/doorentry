@@ -64,7 +64,7 @@ var DoorEntry = (function () {
               console.log('Got company: ' + address.get('name').substr(prefix.length))
               companies.push({
                 name: address.get('name').substr(prefix.length),
-                image: 'https://fenton.bpoffice.ipcortex.net/api/image.whtm/' + address.get('cid') + '/300',
+                image: 'https://' + hostConfig.getHost() + '/api/image.whtm/' + address.get('cid') + '/300',
                 extension: address.get('extension'),
                 companyid: address.get('cid')
               })
@@ -133,6 +133,8 @@ var DoorEntry = (function () {
         document.querySelector('#callstreamvideo').pause()
         if (vexDialog) {
           vex.close(vexDialog.data().vex.id)
+          $(document.body).css('display', 'inline')
+          vexDialog = false
         }
         // included in case semantic ui is needed again but it was removed because it doesn't work very well
         // $('#callmodal').modal('hide')
@@ -249,7 +251,10 @@ var callDialogOptions = {
       text: 'End Call'
     })
   ],
-  afterClose: DoorEntry.endCall
+  afterClose: function () {
+    DoorEntry.endCall()
+    vexDialog = false
+  }
 }
 
 var onAPILoadReady = DoorEntry.initialize
