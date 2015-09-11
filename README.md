@@ -43,4 +43,9 @@ The app will run after boot if it is the only enabled launcher.
 
 Before production use, it is useful to enable ADB over TCP but make sure that it is disabled when used in production. Root access should also be disabled.
 
+Caveats
+-------
+
+Must be manually refreshed via UDP after a reconnection. A useful enhancement would be to refresh automatically.
+
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
